@@ -38,16 +38,6 @@
                ReferencedContainer = "container:Wallet.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "34C47CC51D397F5D0070586F"
-               BuildableName = "WalletUITests.xctest"
-               BlueprintName = "WalletUITests"
-               ReferencedContainer = "container:Wallet.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
