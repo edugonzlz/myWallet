@@ -8,12 +8,17 @@
 
 #import <XCTest/XCTest.h>
 #import "EGGSimpleViewController.h"
+#import "EGGWalletTableViewController.h"
+#import "EGGWallet.h"
 
 @interface EGGControllerTests : XCTestCase
 
 @property (strong, nonatomic)EGGSimpleViewController *simpleVC;
 @property (strong, nonatomic)UIButton *button;
 @property (strong, nonatomic)UILabel *label;
+
+@property (strong, nonatomic)EGGWalletTableViewController *walletVC;
+@property (strong, nonatomic)EGGWallet *wallet;
 
 @end
 
@@ -27,6 +32,10 @@
     [self.button setTitle:@"Hola Mozoncillo" forState:UIControlStateNormal];
     self.label = [[UILabel alloc]initWithFrame:CGRectZero];
     self.simpleVC.displayLabel = self.label;
+
+    self.wallet = [[EGGWallet alloc] initWithAmount:1 currency:@"USD"];
+    [self.wallet plus:[EGGMoney euroWithAmount:1]];
+    self.walletVC = [[EGGWalletTableViewController alloc] initWithModel:self.wallet];
 
 }
 
@@ -47,5 +56,17 @@
     //comprobamos que se etiqueta con el mismo texto
     XCTAssertEqualObjects(self.button.titleLabel.text, self.label.text, @"Boton y label deben tener el mismo texto");
 
+}
+
+-(void)testThatTableHasOneSection {
+
+    NSUInteger sections = [self.walletVC numberOfSectionsInTableView:nil];
+
+    XCTAssertEqual(sections, 1, @"Solo debe haber una seccion");
+}
+
+-(void)testThatNumberOfCellsIsNumberOfMoneysPlusOne {
+
+    XCTAssertEqual(self.wallet.count + 1, [self.walletVC tableView:nil numberOfRowsInSection:0], @"Numero de celdas = numero de moneys + 1");
 }
 @end

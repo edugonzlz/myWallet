@@ -11,4 +11,6 @@
 
 @interface EGGWallet : NSObject<EGGMoney>
 
+@property (nonatomic, readonly)NSUInteger count;
+
 @end
