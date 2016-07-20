@@ -10,6 +10,11 @@
 		343803F21D3FE8E6008569BA /* EGGWalletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 343803F11D3FE8E6008569BA /* EGGWalletTests.m */; };
 		343803F51D3FEFB4008569BA /* EGGWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 343803F41D3FEFB4008569BA /* EGGWallet.m */; };
 		343803F61D3FF190008569BA /* EGGWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 343803F41D3FEFB4008569BA /* EGGWallet.m */; };
+		34438B971D401A0700E634AD /* EGGSimpleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34438B951D401A0700E634AD /* EGGSimpleViewController.m */; };
+		34438B981D401A0700E634AD /* EGGSimpleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34438B951D401A0700E634AD /* EGGSimpleViewController.m */; };
+		34438B991D401A0700E634AD /* EGGSimpleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34438B961D401A0700E634AD /* EGGSimpleViewController.xib */; };
+		34438B9A1D401A0700E634AD /* EGGSimpleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34438B961D401A0700E634AD /* EGGSimpleViewController.xib */; };
+		34438B9D1D401A4600E634AD /* EGGControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 34438B9C1D401A4600E634AD /* EGGControllerTests.m */; };
 		346620B41D3AA54600905197 /* EGGMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 346620B31D3AA54600905197 /* EGGMoney.m */; };
 		346620B71D3AA88F00905197 /* NSObject+GNUStepAddons.m in Sources */ = {isa = PBXBuildFile; fileRef = 346620B61D3AA88F00905197 /* NSObject+GNUStepAddons.m */; };
 		346620BA1D3AAB5100905197 /* EGGMoneyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 346620B91D3AAB5100905197 /* EGGMoneyTests.m */; };
@@ -44,6 +49,10 @@
 		343803F11D3FE8E6008569BA /* EGGWalletTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGGWalletTests.m; sourceTree = "<group>"; };
 		343803F31D3FEFB4008569BA /* EGGWallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGGWallet.h; sourceTree = "<group>"; };
 		343803F41D3FEFB4008569BA /* EGGWallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGGWallet.m; sourceTree = "<group>"; };
+		34438B941D401A0700E634AD /* EGGSimpleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGGSimpleViewController.h; sourceTree = "<group>"; };
+		34438B951D401A0700E634AD /* EGGSimpleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGGSimpleViewController.m; sourceTree = "<group>"; };
+		34438B961D401A0700E634AD /* EGGSimpleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EGGSimpleViewController.xib; sourceTree = "<group>"; };
+		34438B9C1D401A4600E634AD /* EGGControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGGControllerTests.m; sourceTree = "<group>"; };
 		346620B21D3AA54600905197 /* EGGMoney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGGMoney.h; sourceTree = "<group>"; };
 		346620B31D3AA54600905197 /* EGGMoney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGGMoney.m; sourceTree = "<group>"; };
 		346620B51D3AA88F00905197 /* NSObject+GNUStepAddons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+GNUStepAddons.h"; sourceTree = "<group>"; };
@@ -89,6 +98,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34438B931D4019C100E634AD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				34438B941D401A0700E634AD /* EGGSimpleViewController.h */,
+				34438B951D401A0700E634AD /* EGGSimpleViewController.m */,
+				34438B961D401A0700E634AD /* EGGSimpleViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		34438B9B1D401A1800E634AD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				34438B9C1D401A4600E634AD /* EGGControllerTests.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		346620B81D3AA89600905197 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +147,7 @@
 		34C47CAA1D397F5D0070586F /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				34438B931D4019C100E634AD /* Controllers */,
 				346620B81D3AA89600905197 /* Categories */,
 				34C47CDB1D3980F20070586F /* Models */,
 				34C47CAE1D397F5D0070586F /* AppDelegate.h */,
@@ -143,6 +171,7 @@
 		34C47CBE1D397F5D0070586F /* WalletTests */ = {
 			isa = PBXGroup;
 			children = (
+				34438B9B1D401A1800E634AD /* Controllers */,
 				34C47CD81D397F8C0070586F /* Models */,
 				34C47CC11D397F5D0070586F /* Info.plist */,
 			);
@@ -276,6 +305,7 @@
 			files = (
 				34C47CB21D397F5D0070586F /* Assets.xcassets in Resources */,
 				34C47CB51D397F5D0070586F /* LaunchScreen.storyboard in Resources */,
+				34438B991D401A0700E634AD /* EGGSimpleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +313,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34438B9A1D401A0700E634AD /* EGGSimpleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +334,7 @@
 				34C47CB01D397F5D0070586F /* AppDelegate.m in Sources */,
 				34C47CAD1D397F5D0070586F /* main.m in Sources */,
 				34B78CD81D3E862300EE0807 /* EGGBroker.m in Sources */,
+				34438B971D401A0700E634AD /* EGGSimpleViewController.m in Sources */,
 				346620B71D3AA88F00905197 /* NSObject+GNUStepAddons.m in Sources */,
 				343803F51D3FEFB4008569BA /* EGGWallet.m in Sources */,
 				346620B41D3AA54600905197 /* EGGMoney.m in Sources */,
@@ -314,8 +346,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				34B78CD51D3E84BE00EE0807 /* EGGBrokerTest.m in Sources */,
+				34438B9D1D401A4600E634AD /* EGGControllerTests.m in Sources */,
 				346620BB1D3AABE900905197 /* EGGMoney.m in Sources */,
 				34B78CD91D3E862300EE0807 /* EGGBroker.m in Sources */,
+				34438B981D401A0700E634AD /* EGGSimpleViewController.m in Sources */,
 				343803F21D3FE8E6008569BA /* EGGWalletTests.m in Sources */,
 				343803F61D3FF190008569BA /* EGGWallet.m in Sources */,
 				346620BA1D3AAB5100905197 /* EGGMoneyTests.m in Sources */,
