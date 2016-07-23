@@ -7,15 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "EGGSimpleViewController.h"
 #import "EGGWalletTableViewController.h"
 #import "EGGWallet.h"
 
 @interface EGGControllerTests : XCTestCase
-
-@property (strong, nonatomic)EGGSimpleViewController *simpleVC;
-@property (strong, nonatomic)UIButton *button;
-@property (strong, nonatomic)UILabel *label;
 
 @property (strong, nonatomic)EGGWalletTableViewController *walletVC;
 @property (strong, nonatomic)EGGWallet *wallet;
@@ -27,12 +22,6 @@
 - (void)setUp {
     [super setUp];
 
-    self.simpleVC = [[EGGSimpleViewController alloc]initWithNibName:nil bundle:nil];
-    self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.button setTitle:@"Hola Mozoncillo" forState:UIControlStateNormal];
-    self.label = [[UILabel alloc]initWithFrame:CGRectZero];
-    self.simpleVC.displayLabel = self.label;
-
     self.wallet = [[EGGWallet alloc] initWithAmount:1 currency:@"USD"];
     [self.wallet plus:[EGGMoney euroWithAmount:1]];
     self.walletVC = [[EGGWalletTableViewController alloc] initWithModel:self.wallet];
@@ -42,19 +31,6 @@
 - (void)tearDown {
 
     [super tearDown];
-
-    self.simpleVC = nil;
-    self.button = nil;
-    self.label = nil;
-}
-
--(void)testThatTextOnLabelIsEqualToTextOnButton {
-
-    //mandamos un mensaje
-    [self.simpleVC displayText:self.button];
-
-    //comprobamos que se etiqueta con el mismo texto
-    XCTAssertEqualObjects(self.button.titleLabel.text, self.label.text, @"Boton y label deben tener el mismo texto");
 
 }
 
