@@ -81,7 +81,7 @@
     }
     if (indexPath.section == [self.model currenciesCount]) {
 
-        cell.textLabel.text = @"Total";
+        cell.textLabel.text = @"Total EUR";
     }
     
     return cell;

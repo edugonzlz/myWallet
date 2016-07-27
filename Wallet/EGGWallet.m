@@ -125,7 +125,7 @@
         for (EGGMoney *money in self.moneys) {
 
             // Los sumamos
-            total = [total plus:[money reduceToCurrency:@"USD" withBroker:self.broker]];
+            total = [total plus:[money reduceToCurrency:@"EUR" withBroker:self.broker]];
         }
 
 
