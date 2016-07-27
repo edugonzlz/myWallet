@@ -10,6 +10,9 @@
 		343803F21D3FE8E6008569BA /* EGGWalletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 343803F11D3FE8E6008569BA /* EGGWalletTests.m */; };
 		343803F51D3FEFB4008569BA /* EGGWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 343803F41D3FEFB4008569BA /* EGGWallet.m */; };
 		343803F61D3FF190008569BA /* EGGWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 343803F41D3FEFB4008569BA /* EGGWallet.m */; };
+		34438B9D1D401A4600E634AD /* EGGControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 34438B9C1D401A4600E634AD /* EGGControllerTests.m */; };
+		34438BA01D40202D00E634AD /* EGGWalletTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34438B9F1D40202D00E634AD /* EGGWalletTableViewController.m */; };
+		34438BA11D40202D00E634AD /* EGGWalletTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34438B9F1D40202D00E634AD /* EGGWalletTableViewController.m */; };
 		346620B41D3AA54600905197 /* EGGMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 346620B31D3AA54600905197 /* EGGMoney.m */; };
 		346620B71D3AA88F00905197 /* NSObject+GNUStepAddons.m in Sources */ = {isa = PBXBuildFile; fileRef = 346620B61D3AA88F00905197 /* NSObject+GNUStepAddons.m */; };
 		346620BA1D3AAB5100905197 /* EGGMoneyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 346620B91D3AAB5100905197 /* EGGMoneyTests.m */; };
@@ -44,6 +47,9 @@
 		343803F11D3FE8E6008569BA /* EGGWalletTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGGWalletTests.m; sourceTree = "<group>"; };
 		343803F31D3FEFB4008569BA /* EGGWallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGGWallet.h; sourceTree = "<group>"; };
 		343803F41D3FEFB4008569BA /* EGGWallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGGWallet.m; sourceTree = "<group>"; };
+		34438B9C1D401A4600E634AD /* EGGControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGGControllerTests.m; sourceTree = "<group>"; };
+		34438B9E1D40202D00E634AD /* EGGWalletTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGGWalletTableViewController.h; sourceTree = "<group>"; };
+		34438B9F1D40202D00E634AD /* EGGWalletTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGGWalletTableViewController.m; sourceTree = "<group>"; };
 		346620B21D3AA54600905197 /* EGGMoney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGGMoney.h; sourceTree = "<group>"; };
 		346620B31D3AA54600905197 /* EGGMoney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGGMoney.m; sourceTree = "<group>"; };
 		346620B51D3AA88F00905197 /* NSObject+GNUStepAddons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+GNUStepAddons.h"; sourceTree = "<group>"; };
@@ -89,6 +95,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34438B931D4019C100E634AD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				34438B9E1D40202D00E634AD /* EGGWalletTableViewController.h */,
+				34438B9F1D40202D00E634AD /* EGGWalletTableViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		34438B9B1D401A1800E634AD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				34438B9C1D401A4600E634AD /* EGGControllerTests.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		346620B81D3AA89600905197 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,10 +143,11 @@
 		34C47CAA1D397F5D0070586F /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
-				346620B81D3AA89600905197 /* Categories */,
-				34C47CDB1D3980F20070586F /* Models */,
 				34C47CAE1D397F5D0070586F /* AppDelegate.h */,
 				34C47CAF1D397F5D0070586F /* AppDelegate.m */,
+				34438B931D4019C100E634AD /* Controllers */,
+				346620B81D3AA89600905197 /* Categories */,
+				34C47CDB1D3980F20070586F /* Models */,
 				34C47CB11D397F5D0070586F /* Assets.xcassets */,
 				34C47CB31D397F5D0070586F /* LaunchScreen.storyboard */,
 				34C47CB61D397F5D0070586F /* Info.plist */,
@@ -143,6 +167,7 @@
 		34C47CBE1D397F5D0070586F /* WalletTests */ = {
 			isa = PBXGroup;
 			children = (
+				34438B9B1D401A1800E634AD /* Controllers */,
 				34C47CD81D397F8C0070586F /* Models */,
 				34C47CC11D397F5D0070586F /* Info.plist */,
 			);
@@ -303,6 +328,7 @@
 				34C47CB01D397F5D0070586F /* AppDelegate.m in Sources */,
 				34C47CAD1D397F5D0070586F /* main.m in Sources */,
 				34B78CD81D3E862300EE0807 /* EGGBroker.m in Sources */,
+				34438BA01D40202D00E634AD /* EGGWalletTableViewController.m in Sources */,
 				346620B71D3AA88F00905197 /* NSObject+GNUStepAddons.m in Sources */,
 				343803F51D3FEFB4008569BA /* EGGWallet.m in Sources */,
 				346620B41D3AA54600905197 /* EGGMoney.m in Sources */,
@@ -314,6 +340,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				34B78CD51D3E84BE00EE0807 /* EGGBrokerTest.m in Sources */,
+				34438B9D1D401A4600E634AD /* EGGControllerTests.m in Sources */,
+				34438BA11D40202D00E634AD /* EGGWalletTableViewController.m in Sources */,
 				346620BB1D3AABE900905197 /* EGGMoney.m in Sources */,
 				34B78CD91D3E862300EE0807 /* EGGBroker.m in Sources */,
 				343803F21D3FE8E6008569BA /* EGGWalletTests.m in Sources */,

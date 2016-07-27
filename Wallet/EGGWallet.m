@@ -7,14 +7,40 @@
 //
 
 #import "EGGWallet.h"
+#import "EGGBroker.h"
 
 @interface EGGWallet()
 
 @property (strong, nonatomic) NSMutableArray *moneys;
+@property (strong, nonatomic) EGGBroker *broker;
 
 @end
 
 @implementation EGGWallet
+
+-(NSUInteger)moneysCount {
+
+    return [self.moneys count];
+}
+
+-(NSUInteger)currenciesCount {
+
+    return [self.currencies count];
+}
+
+-(NSArray *)currencies {
+
+    NSMutableArray *currencies = [[NSMutableArray alloc]init];
+
+    for (EGGMoney *money in self.moneys) {
+
+        if (![currencies containsObject:money.currency]) {
+
+            [currencies addObject:money.currency];
+        }
+    }
+    return currencies;
+}
 
 -(id)initWithAmount:(NSInteger)amount currency:(NSString *)currency {
 
@@ -27,6 +53,21 @@
 
     return self;
 }
+
+-(id)initWithAmount:(NSInteger)amount currency:(NSString *)currency broker:(EGGBroker *)broker {
+
+    if (self = [super init]) {
+
+        EGGMoney *money = [[EGGMoney alloc]initWithAmount:amount currency:currency];
+        _moneys = [NSMutableArray array];
+        [_moneys addObject:money];
+
+        _broker = broker;
+    }
+
+    return self;
+}
+
 -(id<EGGMoney>)plus:(EGGMoney *)other {
 
     [self.moneys addObject:other];
@@ -57,5 +98,82 @@
     
     return result;
 }
+
+-(NSUInteger)moneysCountForCurrency:(NSUInteger)section {
+
+    return [self moneysForCurrency:section].count;
+}
+
+-(NSString *)rateNameForSection:(NSUInteger)section {
+
+    if (section >= [self.currencies count]) {
+        return @"Total";
+    }
+    return self.currencies[section];
+}
+
+
+-(EGGMoney *)moneyForIndexPath:(NSIndexPath *)indexPath {
+
+    // Si nos piden la seccion TOTAL
+    if (indexPath.section >= [self.currencies count]) {
+
+        //Devolvemos la suma de todo el money
+        EGGMoney *total = [[EGGMoney alloc] init];
+
+        // Convertimos cada money de moneys en dollares
+        for (EGGMoney *money in self.moneys) {
+
+            // Los sumamos
+            total = [total plus:[money reduceToCurrency:@"USD" withBroker:self.broker]];
+        }
+
+
+        return total;
+    }
+    NSArray *moneys = [self moneysForCurrency:indexPath.section];
+
+    // Si nos piden la celda SUBTOTAL
+    if (indexPath.row >= moneys.count ) {
+
+        return [self subtotal:indexPath.section];
+    }
+    EGGMoney *money = moneys[indexPath.row];
+
+    return money;
+}
+
+-(NSArray *)moneysForCurrency:(NSUInteger)section {
+
+    if (section >= [self.currencies count]) {
+
+        return @[];
+    }
+    // Guardar los moneys de la section en un array
+    NSMutableArray *moneys = [[NSMutableArray alloc]init];
+
+    // Los moneys que coinciden con nuestro currencie los guardamos en el array
+    for (EGGMoney *money in self.moneys) {
+        if (self.currencies[section] == money.currency) {
+            [moneys addObject:money];
+        }
+    }
+    return moneys;
+}
+
+-(EGGMoney *)subtotal:(NSUInteger)forSection {
+
+    //Devolvemos la suma de los elementos del array
+    EGGMoney *subtotal = [[EGGMoney alloc]init];
+    NSArray *moneys = [self moneysForCurrency:forSection];
+
+    for (EGGMoney *money in moneys) {
+        subtotal = [subtotal plus:money];
+    }
+
+    return subtotal;
+}
+
+
 
 @end
