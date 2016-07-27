@@ -13,7 +13,6 @@
 @interface EGGWallet : NSObject<EGGMoney>
 
 @property (nonatomic, readonly)NSUInteger moneysCount;
-@property (nonatomic, readonly)NSUInteger ratesCount;
 @property (nonatomic, readonly)NSArray *currencies;
 @property (nonatomic, readonly)NSUInteger currenciesCount;
 
@@ -23,8 +22,6 @@
 -(NSUInteger)moneysCountForCurrency:(NSUInteger)section;
 
 -(NSString *)rateNameForSection:(NSUInteger)section;
-
--(EGGMoney *)moneyForIndex:(NSUInteger)index;
 
 -(EGGMoney *)moneyForIndexPath:(NSIndexPath *)indexPath;
 

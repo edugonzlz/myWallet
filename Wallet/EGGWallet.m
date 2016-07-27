@@ -119,29 +119,25 @@
     if (indexPath.section >= [self.currencies count]) {
 
         //Devolvemos la suma de todo el money
-        EGGMoney *total = nil;
+        EGGMoney *total = [[EGGMoney alloc] init];
+
+        // Convertimos cada money de moneys en dollares
         for (EGGMoney *money in self.moneys) {
 
+            // Los sumamos
+            total = [total plus:[money reduceToCurrency:@"USD" withBroker:self.broker]];
         }
+
+
         return total;
     }
-
     NSArray *moneys = [self moneysForCurrency:indexPath.section];
 
     // Si nos piden la celda SUBTOTAL
     if (indexPath.row >= moneys.count ) {
 
-        //Devolvemos la suma de los elementos del array
-        EGGMoney *subtotal = [[EGGMoney alloc]init];
-//        NSArray *moneys = [self moneysForCurrency:indexPath.section];
-
-        for (EGGMoney *money in moneys) {
-            subtotal = [subtotal plus:money];
-        }
-
-        return subtotal;
+        return [self subtotal:indexPath.section];
     }
-
     EGGMoney *money = moneys[indexPath.row];
 
     return money;
@@ -163,6 +159,19 @@
         }
     }
     return moneys;
+}
+
+-(EGGMoney *)subtotal:(NSUInteger)forSection {
+
+    //Devolvemos la suma de los elementos del array
+    EGGMoney *subtotal = [[EGGMoney alloc]init];
+    NSArray *moneys = [self moneysForCurrency:forSection];
+
+    for (EGGMoney *money in moneys) {
+        subtotal = [subtotal plus:money];
+    }
+
+    return subtotal;
 }
 
 

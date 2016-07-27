@@ -74,9 +74,14 @@
     cell.textLabel.text = money.currency;
     cell.detailTextLabel.text = money.amount.stringValue;
 
+    // Para la celda extra de la seccion
     if (indexPath.row == [self.model moneysCountForCurrency:indexPath.section] ) {
 
         cell.textLabel.text = @"Subtotal";
+    }
+    if (indexPath.section == [self.model currenciesCount]) {
+
+        cell.textLabel.text = @"Total";
     }
     
     return cell;
