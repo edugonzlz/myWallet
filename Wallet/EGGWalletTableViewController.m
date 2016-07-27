@@ -48,7 +48,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
     // Devolver numero de divisas + 1
-    return [self.model ratesCount] +1;
+    return [self.model currenciesCount] +1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -57,15 +57,35 @@
     return [self.model moneysCountForCurrency:section] +1;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
+
+    EGGMoney *money = [self.model moneyForIndexPath:indexPath];
+
+    static NSString *cellId = @"cell";
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+
+    if (cell == nil) {
+
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellId];
+    }
+
+    cell.textLabel.text = money.currency;
+    cell.detailTextLabel.text = money.amount.stringValue;
+
+    if (indexPath.row == [self.model moneysCountForCurrency:indexPath.section] ) {
+
+        cell.textLabel.text = @"Subtotal";
+    }
     
     return cell;
 }
-*/
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+
+    return [self.model rateNameForSection:section];
+}
 
 /*
 // Override to support conditional editing of the table view.

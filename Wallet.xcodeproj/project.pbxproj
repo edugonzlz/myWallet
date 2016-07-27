@@ -143,11 +143,11 @@
 		34C47CAA1D397F5D0070586F /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				34C47CAE1D397F5D0070586F /* AppDelegate.h */,
+				34C47CAF1D397F5D0070586F /* AppDelegate.m */,
 				34438B931D4019C100E634AD /* Controllers */,
 				346620B81D3AA89600905197 /* Categories */,
 				34C47CDB1D3980F20070586F /* Models */,
-				34C47CAE1D397F5D0070586F /* AppDelegate.h */,
-				34C47CAF1D397F5D0070586F /* AppDelegate.m */,
 				34C47CB11D397F5D0070586F /* Assets.xcassets */,
 				34C47CB31D397F5D0070586F /* LaunchScreen.storyboard */,
 				34C47CB61D397F5D0070586F /* Info.plist */,

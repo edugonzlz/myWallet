@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "EGGWallet.h"
+#import "EGGBroker.h"
+#import "EGGWalletTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,10 +19,29 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//     Override point for customization after application launch.
-//    self.window.backgroundColor = [UIColor whiteColor];
-//    [self.window makeKeyAndVisible];
+
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+    EGGBroker *broker = [[EGGBroker alloc] init];
+
+    [broker addRate:2 fromCurrency:@"EUR" toCurrency:@"USD"];
+
+    EGGWallet *wallet = [[EGGWallet alloc] initWithAmount:1 currency:@"EUR" broker:broker];
+
+    [wallet plus:[EGGMoney euroWithAmount:3]];
+    [wallet plus:[EGGMoney euroWithAmount:7]];
+    [wallet plus:[EGGMoney dollarWithAmount:2]];
+    [wallet plus:[EGGMoney dollarWithAmount:4]];
+    [wallet plus:[EGGMoney dollarWithAmount:10]];
+
+    EGGWalletTableViewController *VC = [[EGGWalletTableViewController alloc]initWithModel:wallet];
+
+    self.window.rootViewController = VC;
+
+    self.window.backgroundColor = [UIColor whiteColor];
+
+    [self.window makeKeyAndVisible];
+
     return YES;
 }
 

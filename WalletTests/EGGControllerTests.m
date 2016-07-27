@@ -25,13 +25,12 @@
     [super setUp];
 
     self.emptyBroker = [EGGBroker new];
-    [self.emptyBroker addRate:3 fromCurrency:@"YEN" toCurrency:@"USD"];
-    [self.emptyBroker addRate:4 fromCurrency:@"POUND" toCurrency:@"EUR"];
+    [self.emptyBroker addRate:2 fromCurrency:@"EUR" toCurrency:@"USD"];
 
     self.wallet = [[EGGWallet alloc] initWithAmount:1 currency:@"USD" broker:self.emptyBroker];
-    self.wallet = [[EGGWallet alloc] initWithAmount:3 currency:@"USD" broker:self.emptyBroker];
     [self.wallet plus:[EGGMoney euroWithAmount:1]];
-    [self.wallet plus:[EGGMoney euroWithAmount:1]];
+    [self.wallet plus:[EGGMoney euroWithAmount:3]];
+    [self.wallet plus:[EGGMoney dollarWithAmount:10]];
 
     self.walletVC = [[EGGWalletTableViewController alloc] initWithModel:self.wallet];
 
@@ -58,7 +57,7 @@
 // Si hay n divisas en el modelo, el dataSource devuelve n + 1 secciones
 -(void)testThatNumberOfSectionsIsNumberOfCurrenciesPlusOne {
 
-    NSUInteger currencies = [self.wallet ratesCount] +1;
+    NSUInteger currencies = [self.wallet currenciesCount] +1;
 
     NSUInteger sections = [self.walletVC numberOfSectionsInTableView:nil];
 

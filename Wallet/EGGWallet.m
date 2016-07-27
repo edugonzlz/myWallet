@@ -23,9 +23,23 @@
     return [self.moneys count];
 }
 
--(NSUInteger)ratesCount {
+-(NSUInteger)currenciesCount {
 
-    return [self.broker ratesCount];
+    return [self.currencies count];
+}
+
+-(NSArray *)currencies {
+
+    NSMutableArray *currencies = [[NSMutableArray alloc]init];
+
+    for (EGGMoney *money in self.moneys) {
+
+        if (![currencies containsObject:money.currency]) {
+
+            [currencies addObject:money.currency];
+        }
+    }
+    return currencies;
 }
 
 -(id)initWithAmount:(NSInteger)amount currency:(NSString *)currency {
@@ -85,26 +99,72 @@
     return result;
 }
 
--(NSUInteger)moneysCountForCurrency:(NSUInteger)currency {
+-(NSUInteger)moneysCountForCurrency:(NSUInteger)section {
 
-    NSUInteger moneys = 0;
-    NSString *curr = nil;
+    return [self moneysForCurrency:section].count;
+}
 
-    if (currency == 0) {
-        curr = @"EUR";
+-(NSString *)rateNameForSection:(NSUInteger)section {
+
+    if (section >= [self.currencies count]) {
+        return @"Total";
     }
-    if (currency == 1) {
-        curr = @"USD";
+    return self.currencies[section];
+}
+
+
+-(EGGMoney *)moneyForIndexPath:(NSIndexPath *)indexPath {
+
+    // Si nos piden la seccion TOTAL
+    if (indexPath.section >= [self.currencies count]) {
+
+        //Devolvemos la suma de todo el money
+        EGGMoney *total = nil;
+        for (EGGMoney *money in self.moneys) {
+
+        }
+        return total;
     }
 
+    NSArray *moneys = [self moneysForCurrency:indexPath.section];
+
+    // Si nos piden la celda SUBTOTAL
+    if (indexPath.row >= moneys.count ) {
+
+        //Devolvemos la suma de los elementos del array
+        EGGMoney *subtotal = [[EGGMoney alloc]init];
+//        NSArray *moneys = [self moneysForCurrency:indexPath.section];
+
+        for (EGGMoney *money in moneys) {
+            subtotal = [subtotal plus:money];
+        }
+
+        return subtotal;
+    }
+
+    EGGMoney *money = moneys[indexPath.row];
+
+    return money;
+}
+
+-(NSArray *)moneysForCurrency:(NSUInteger)section {
+
+    if (section >= [self.currencies count]) {
+
+        return @[];
+    }
+    // Guardar los moneys de la section en un array
+    NSMutableArray *moneys = [[NSMutableArray alloc]init];
+
+    // Los moneys que coinciden con nuestro currencie los guardamos en el array
     for (EGGMoney *money in self.moneys) {
-
-        if (curr == money.currency) {
-            moneys += 1;
+        if (self.currencies[section] == money.currency) {
+            [moneys addObject:money];
         }
     }
-    return  moneys;
+    return moneys;
 }
+
 
 
 @end

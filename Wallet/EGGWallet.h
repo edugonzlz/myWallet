@@ -7,15 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
+@import UIKit;
 #import "EGGMoney.h"
 
 @interface EGGWallet : NSObject<EGGMoney>
 
 @property (nonatomic, readonly)NSUInteger moneysCount;
 @property (nonatomic, readonly)NSUInteger ratesCount;
+@property (nonatomic, readonly)NSArray *currencies;
+@property (nonatomic, readonly)NSUInteger currenciesCount;
+
 
 -(id)initWithAmount:(NSInteger)amount currency:(NSString *)currency broker:(EGGBroker *)broker;
 
--(NSUInteger)moneysCountForCurrency:(NSUInteger)currency;
+-(NSUInteger)moneysCountForCurrency:(NSUInteger)section;
+
+-(NSString *)rateNameForSection:(NSUInteger)section;
+
+-(EGGMoney *)moneyForIndex:(NSUInteger)index;
+
+-(EGGMoney *)moneyForIndexPath:(NSIndexPath *)indexPath;
 
 @end
