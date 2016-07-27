@@ -7,18 +7,25 @@
 //
 
 #import "EGGWallet.h"
+#import "EGGBroker.h"
 
 @interface EGGWallet()
 
 @property (strong, nonatomic) NSMutableArray *moneys;
+@property (strong, nonatomic) EGGBroker *broker;
 
 @end
 
 @implementation EGGWallet
 
--(NSUInteger)count {
+-(NSUInteger)moneysCount {
 
     return [self.moneys count];
+}
+
+-(NSUInteger)ratesCount {
+
+    return [self.broker ratesCount];
 }
 
 -(id)initWithAmount:(NSInteger)amount currency:(NSString *)currency {
@@ -32,6 +39,21 @@
 
     return self;
 }
+
+-(id)initWithAmount:(NSInteger)amount currency:(NSString *)currency broker:(EGGBroker *)broker {
+
+    if (self = [super init]) {
+
+        EGGMoney *money = [[EGGMoney alloc]initWithAmount:amount currency:currency];
+        _moneys = [NSMutableArray array];
+        [_moneys addObject:money];
+
+        _broker = broker;
+    }
+
+    return self;
+}
+
 -(id<EGGMoney>)plus:(EGGMoney *)other {
 
     [self.moneys addObject:other];
@@ -62,5 +84,27 @@
     
     return result;
 }
+
+-(NSUInteger)moneysCountForCurrency:(NSUInteger)currency {
+
+    NSUInteger moneys = 0;
+    NSString *curr = nil;
+
+    if (currency == 0) {
+        curr = @"EUR";
+    }
+    if (currency == 1) {
+        curr = @"USD";
+    }
+
+    for (EGGMoney *money in self.moneys) {
+
+        if (curr == money.currency) {
+            moneys += 1;
+        }
+    }
+    return  moneys;
+}
+
 
 @end

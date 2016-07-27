@@ -8,10 +8,13 @@
 
 #import "EGGWalletTableViewController.h"
 #import "EGGWallet.h"
+#import "EGGBroker.h"
 
 @interface EGGWalletTableViewController ()
 
-@property (strong,nonatomic)EGGWallet *model;
+@property (strong, nonatomic)EGGWallet *model;
+@property (strong, nonatomic)EGGBroker *broker;
+
 @end
 
 @implementation EGGWalletTableViewController
@@ -44,12 +47,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 1;
+    // Devolver numero de divisas + 1
+    return [self.model ratesCount] +1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return [self.model count] +1;
+    // Devolver numero de moneys +1 para cada seccion/divisa
+    return [self.model moneysCountForCurrency:section] +1;
 }
 
 /*
