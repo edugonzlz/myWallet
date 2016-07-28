@@ -16,7 +16,6 @@
 @property (nonatomic, readonly)NSArray *currencies;
 @property (nonatomic, readonly)NSUInteger currenciesCount;
 
-
 -(id)initWithAmount:(NSInteger)amount currency:(NSString *)currency broker:(EGGBroker *)broker;
 
 -(NSUInteger)moneysCountForCurrency:(NSUInteger)section;

@@ -162,19 +162,18 @@
 
     return subtotal;
 }
+
 -(EGGMoney *)total {
 
     EGGMoney *total = [[EGGMoney alloc]init];
 
     for (EGGMoney *money in self.moneys) {
 
-        // Convertimos cada money de moneys en dollares
+        // Convertimos cada money de moneys en euros
         // Los sumamos
         total = [total plus:[money reduceToCurrency:@"EUR" withBroker:self.broker]];
     }
     return total;
 }
-
-
 
 @end
