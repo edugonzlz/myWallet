@@ -35,4 +35,6 @@
 
 +(id) dollarWithAmount:(NSInteger)amount;
 
++(id) yenWithAmount:(NSInteger)amount;
+
 @end

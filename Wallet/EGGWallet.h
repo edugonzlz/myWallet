@@ -25,4 +25,8 @@
 
 -(EGGMoney *)moneyForIndexPath:(NSIndexPath *)indexPath;
 
+-(EGGMoney *)subtotal:(NSUInteger)forSection;
+
+-(EGGMoney *)total;
+
 @end

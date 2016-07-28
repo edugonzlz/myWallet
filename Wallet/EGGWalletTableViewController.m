@@ -78,10 +78,12 @@
     if (indexPath.row == [self.model moneysCountForCurrency:indexPath.section] ) {
 
         cell.textLabel.text = @"Subtotal";
+        cell.detailTextLabel.text = [self.model subtotal:indexPath.section].amount.stringValue;
     }
     if (indexPath.section == [self.model currenciesCount]) {
 
         cell.textLabel.text = @"Total EUR";
+        cell.detailTextLabel.text = [self.model total].amount.stringValue;
     }
     
     return cell;

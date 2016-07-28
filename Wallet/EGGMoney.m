@@ -27,6 +27,12 @@
     return [[EGGMoney alloc]initWithAmount:amount currency:@"USD"];
 }
 
++(id) yenWithAmount:(NSInteger)amount {
+
+    return [[EGGMoney alloc]initWithAmount:amount currency:@"YEN"];
+}
+
+
 -(id)initWithAmount:(NSInteger)amount
            currency:(NSString *)currency {
 

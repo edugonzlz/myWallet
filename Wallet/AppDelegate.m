@@ -25,6 +25,8 @@
     EGGBroker *broker = [[EGGBroker alloc] init];
 
     [broker addRate:2 fromCurrency:@"EUR" toCurrency:@"USD"];
+    [broker addRate:3 fromCurrency:@"YEN" toCurrency:@"USD"];
+    [broker addRate:1.5 fromCurrency:@"YEN" toCurrency:@"EUR"];
 
     EGGWallet *wallet = [[EGGWallet alloc] initWithAmount:1 currency:@"EUR" broker:broker];
 
@@ -33,6 +35,7 @@
     [wallet plus:[EGGMoney dollarWithAmount:2]];
     [wallet plus:[EGGMoney dollarWithAmount:4]];
     [wallet plus:[EGGMoney dollarWithAmount:10]];
+    [wallet plus:[EGGMoney yenWithAmount:20]];
 
     EGGWalletTableViewController *VC = [[EGGWalletTableViewController alloc]initWithModel:wallet];
 
