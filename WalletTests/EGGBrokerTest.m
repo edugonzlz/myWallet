@@ -18,7 +18,7 @@
 
 @implementation EGGBrokerTest
 
-- (void)setUp {
+-(void)setUp {
     [super setUp];
 
     self.emptyBroker = [EGGBroker new];
@@ -26,7 +26,7 @@
 
 }
 
-- (void)tearDown {
+-(void)tearDown {
 
     [super tearDown];
 

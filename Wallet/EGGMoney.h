@@ -13,8 +13,9 @@
 
 @protocol EGGMoney <NSObject>
 
+// TODO: - Deberiamos trabajar con float en vez de NSInteger para trabajar con decimales
 -(id)initWithAmount:(NSInteger)amount
-           currency:(NSString *) currency;
+           currency:(NSString *)currency;
 
 -(id<EGGMoney>)times:(NSInteger)multiplier;
 

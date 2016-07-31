@@ -15,12 +15,13 @@
 
 @implementation EGGMoneyTests
 
--(void) testCurrencies {
+-(void)testCurrencies {
 
     XCTAssertEqualObjects(@"EUR", [[EGGMoney euroWithAmount:1] currency], @"The currency of euros should be EUR");
 
     XCTAssertEqualObjects(@"USD", [[EGGMoney dollarWithAmount:1] currency], @"The currency of dollars should be USD");
 }
+
 -(void)testMultiplication {
 
     // Creamos una clase con los valores conocidos para probarla
@@ -33,7 +34,7 @@
     // podriamos comprobar mas cosas de lo mismo
 }
 
--(void) testEquality {
+-(void)testEquality {
 
     EGGMoney *five = [EGGMoney euroWithAmount:5];
     EGGMoney *ten = [EGGMoney euroWithAmount:10];
@@ -43,7 +44,7 @@
     XCTAssertEqualObjects([EGGMoney dollarWithAmount:4], [[EGGMoney dollarWithAmount:2] times:2], @"Objetos equivalentes deberian ser iguales");
 }
 
--(void) testDifferentCurrencies {
+-(void)testDifferentCurrencies {
 
     EGGMoney *euro = [EGGMoney euroWithAmount:1];
     EGGMoney *dollar = [EGGMoney dollarWithAmount:1];
@@ -51,7 +52,7 @@
     XCTAssertNotEqualObjects(euro, dollar, @"Diferent currencies should not be equal");
 }
 
--(void) testHash {
+-(void)testHash {
 
     EGGMoney *a = [EGGMoney euroWithAmount:2];
     EGGMoney *b = [EGGMoney euroWithAmount:2];
@@ -60,7 +61,7 @@
     XCTAssertEqual([[EGGMoney dollarWithAmount:3] hash], [[EGGMoney dollarWithAmount:3] hash], @"Objetos iguales deben tener el mismo hash");
 }
 
--(void) testAmountStorage {
+-(void)testAmountStorage {
 
     EGGMoney *euro = [EGGMoney euroWithAmount:2];
 
@@ -71,22 +72,22 @@
 #pragma clang diagnostic pop
     
 }
-
--(void) testSimpleAddittion {
+// TODO: - Testear la suma de currencies distintas
+-(void)testSimpleAddittion {
 
     XCTAssertEqualObjects([[EGGMoney dollarWithAmount:5] plus: [EGGMoney dollarWithAmount:5]],
                               [EGGMoney dollarWithAmount:10],
                               @"5$ +5$ = 10$");
 }
 
--(void) testThatHashIsAmount {
+-(void)testThatHashIsAmount {
 
     EGGMoney *one = [EGGMoney dollarWithAmount:1];
 
     XCTAssertEqual([one hash], 1, @"El hash debe ser lo mismo que el amount");
 }
 
--(void) testDescription {
+-(void)testDescription {
 
     EGGMoney *one = [EGGMoney dollarWithAmount:1];
     NSString *desc = @"<EGGMoney: USD 1>";
