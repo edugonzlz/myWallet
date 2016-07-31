@@ -12,7 +12,6 @@
 @interface EGGBroker : NSObject
 
 @property (strong, nonatomic)NSMutableDictionary *rates;
-@property (nonatomic, readonly)NSUInteger ratesCount;
 
 -(EGGMoney *)reduce:(id<EGGMoney>)money
          toCurrency:(NSString *)currency;

@@ -25,14 +25,6 @@
     return self;
 }
 
--(NSUInteger)ratesCount {
-
-    // Devolvemos el numero de rates/2 porque para cada rate hemos guardado el inverso
-    NSUInteger count = self.rates.count/2;
-
-    return count;
-}
-
 -(EGGMoney *)reduce:(id<EGGMoney>)money
          toCurrency:(NSString *)currency {
 

@@ -8,12 +8,10 @@
 
 #import "EGGWalletTableViewController.h"
 #import "EGGWallet.h"
-#import "EGGBroker.h"
 
 @interface EGGWalletTableViewController ()
 
 @property (strong, nonatomic)EGGWallet *model;
-@property (strong, nonatomic)EGGBroker *broker;
 
 @end
 
@@ -26,21 +24,6 @@
         _model = model;
     }
     return self;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -74,12 +57,14 @@
     cell.textLabel.text = money.currency;
     cell.detailTextLabel.text = money.amount.stringValue;
 
-    // Para la celda extra de la seccion
+    // Para la celda extra de la seccion, EL SUBTOTAL
     if (indexPath.row == [self.model moneysCountForCurrency:indexPath.section] ) {
 
         cell.textLabel.text = @"Subtotal";
         cell.detailTextLabel.text = [self.model subtotal:indexPath.section].amount.stringValue;
     }
+
+    // Para la seccion extra, EL TOTAL
     if (indexPath.section == [self.model currenciesCount]) {
 
         cell.textLabel.text = @"Total EUR";
@@ -91,6 +76,9 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 
+    if (section >= [self.model.currencies count]) {
+        return @"TOTAL";
+    }
     return [self.model rateNameForSection:section];
 }
 

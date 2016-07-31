@@ -10,11 +10,6 @@
 #import "NSObject+GNUStepAddons.h"
 #import "EGGBroker.h"
 
-@interface EGGMoney()
-
-@end
-
-
 @implementation EGGMoney
 
 +(id)euroWithAmount:(NSInteger)amount {
@@ -54,6 +49,7 @@
     //    return [self subclassResponsibility:_cmd];
 }
 
+// TODO: - Debemos convertir antes de sumar  o si no llamar a la conversion dentro del metodo
 -(id<EGGMoney>)plus:(EGGMoney *)other {
 
     NSInteger totalAmount = [self.amount integerValue] + [other.amount integerValue];
@@ -88,7 +84,6 @@
     }
     
     return result;
-
 }
 
 // MARK: - OverWritten
@@ -107,7 +102,6 @@
 
         return NO;
     }
-
 }
 
 -(NSUInteger)hash {

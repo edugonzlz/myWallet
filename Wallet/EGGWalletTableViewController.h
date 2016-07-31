@@ -10,13 +10,8 @@
 @class EGGWallet;
 @class EGGBroker;
 
-#define EUR_SECTION 0
-#define USD_SECTION 1
-
-
 @interface EGGWalletTableViewController : UITableViewController
 
-// TODO: - ver si necesito los dos inits
 -(id)initWithModel:(EGGWallet *)model;
 
 @end

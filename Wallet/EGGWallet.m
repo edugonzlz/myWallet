@@ -64,7 +64,6 @@
 
         _broker = broker;
     }
-
     return self;
 }
 
@@ -106,10 +105,14 @@
 
 -(NSString *)rateNameForSection:(NSUInteger)section {
 
-    if (section >= [self.currencies count]) {
-        return @"Total";
+    NSString *rateName = @"";
+
+    if (section < [self.currencies count]) {
+
+        rateName = self.currencies[section];
     }
-    return self.currencies[section];
+
+    return rateName;
 }
 
 
@@ -128,20 +131,22 @@
             money = moneys[indexPath.row];
         }
     }
-
     return money;
 }
 
+// MARK: - Utils
 -(NSArray *)moneysForCurrency:(NSUInteger)section {
 
+    // Si nos piden una seccion extra no devolvemos nada, porque es el total
     if (section >= [self.currencies count]) {
 
         return @[];
     }
+    
     // Guardar los moneys de la section en un array
     NSMutableArray *moneys = [[NSMutableArray alloc]init];
 
-    // Los moneys que coinciden con nuestro currencie los guardamos en el array
+    // Los moneys con la currencie de la section que nos pasan los guardamos en el array
     for (EGGMoney *money in self.moneys) {
         if (self.currencies[section] == money.currency) {
             [moneys addObject:money];
@@ -159,7 +164,6 @@
     for (EGGMoney *money in moneys) {
         subtotal = [subtotal plus:money];
     }
-
     return subtotal;
 }
 
