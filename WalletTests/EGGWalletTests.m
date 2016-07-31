@@ -39,7 +39,7 @@
 
     EGGMoney *hundredDollars = [EGGMoney dollarWithAmount:100];
     
-    XCTAssertEqualObjects(reduced, hundredDollars, @"40€ + 20$ = 100$ 2:1");
+    XCTAssertEqualObjects(reduced.amount, hundredDollars.amount, @"40€ + 20$ = 100$ 2:1");
 }
 
 @end
